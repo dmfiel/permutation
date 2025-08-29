@@ -34,7 +34,6 @@ function checkOverlap(indices: number[], count: number) {
   for (let i = 0; i < count; i++)
     if (indices[count] === indices[i]) return false;
   return true;
-  git;
 }
 
 function counter(): (indices: number[]) => void {

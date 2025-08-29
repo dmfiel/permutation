@@ -17,13 +17,13 @@ function permutation(pick, max, usePermutation) {
     if (max <= 0)
         return console.error("Max must be 1 or more.");
     var i = new Array(pick);
-    loop(i, pick, max, 0, usePermutation);
+    loopOneIndex(i, pick, max, 0, usePermutation);
 }
-function loop(indices, pick, max, count, usePermutation) {
+function loopOneIndex(indices, pick, max, count, usePermutation) {
     for (indices[count] = 0; indices[count] < max; indices[count]++) {
         if (checkOverlap(indices, count)) {
             if (count < pick - 1)
-                loop(indices, pick, max, count + 1, usePermutation);
+                loopOneIndex(indices, pick, max, count + 1, usePermutation);
             if (count === pick - 1)
                 usePermutation(indices);
         }
@@ -40,10 +40,10 @@ function checkOverlap(indices, count) {
     return true;
 }
 function counter() {
-    var countPerm = 0;
+    var permutationCount = 0;
     return function showIndices(indices) {
-        countPerm++;
-        console.log.apply(console, __spreadArray([countPerm], indices, false));
+        permutationCount++;
+        console.log.apply(console, __spreadArray([permutationCount], indices, false));
     };
 }
 var myShowIndices = counter();
